@@ -27,13 +27,13 @@ def on_unbind_all_click():
 def set_sudo_pass(e):
     cfg.sudo_pass = e.value
 
-ui.input(label='Sudo Password', on_change=lambda e: set_sudo_pass(e))
+ui.input(label='Sudo Password', password=True, on_change=lambda e: set_sudo_pass(e))
 
 columns = [{'name': 'device', 'label': 'Device', 'field': 'device'},
            {'name': 'action', 'label': 'Action', 'align': 'center'}
 ]
 
-table = ui.table(columns=columns, rows=[])
+table = ui.table(columns=columns, rows=[]).classes("justify-center")
 table.add_slot('body-cell-action', '''
     <q-td :props="props">
         <q-btn label="Bind" @click="() => $parent.$emit('bind', props.row)" flat />
