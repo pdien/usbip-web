@@ -6,6 +6,7 @@ def check_sudo_entered():
     return False if cfg.sudo_pass == "" else True
 
 def get_devices():
+    table.rows.clear()
     for device in helper.get_usb_devices():
         table.rows.append({'device': device})
 
